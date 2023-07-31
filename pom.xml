@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--    统一父包管理-->
+<!--    <parent>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--        <version>3.0.2</version>-->
+<!--        <relativePath/>-->
+<!--    </parent>-->
+
+
+
+    <groupId>network.y9.demo</groupId>
+    <artifactId>DDDdemo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>DDDdemo-iface</module>
+        <module>DDDdemo-domain</module>
+        <module>DDDdemo-common</module>
+        <module>DDDdemo-gateway</module>
+        <module>DDDdemo-application</module>
+        <module>DDDdemo-infrastructure</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- maven plugin version-->
+        <maven.compiler.version>3.10.1</maven.compiler.version>
+        <maven.source.version>3.2.1</maven.source.version>
+        <maven.archetype.version>3.2.1</maven.archetype.version>
+        <!-- 版本号统一管理-->
+        <!-- 工具包-->
+        <cn.hutool.version>5.8.12</cn.hutool.version>
+        <org.projectlombok.version>1.18.26</org.projectlombok.version>
+        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!--            内部包-->
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-common</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-domain</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-iface</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-infrastructure</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-application</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>network.y9.demo</groupId>
+                <artifactId>DDDdemo-gateway</artifactId>
+                <version>${version}</version>
+            </dependency>
+
+            <!--            spring-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-test</artifactId>-->
+<!--                <version>3.0.2</version>-->
+<!--                <scope>test</scope>-->
+<!--            </dependency>-->
+
+
+            <!-- 工具类-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${cn.hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>1.17</source>
+                    <target>1.17</target>
+                    <encoding>UTF-8</encoding>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>${maven.archetype.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
